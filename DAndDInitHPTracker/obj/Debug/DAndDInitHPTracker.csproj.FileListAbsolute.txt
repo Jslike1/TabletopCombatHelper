@@ -1,0 +1,10 @@
+C:\Users\John-PC\source\repos\DAndDInitHPTracker\DAndDInitHPTracker\bin\Debug\DAndDInitHPTracker.exe.config
+C:\Users\John-PC\source\repos\DAndDInitHPTracker\DAndDInitHPTracker\bin\Debug\DAndDInitHPTracker.exe
+C:\Users\John-PC\source\repos\DAndDInitHPTracker\DAndDInitHPTracker\bin\Debug\DAndDInitHPTracker.pdb
+C:\Users\John-PC\source\repos\DAndDInitHPTracker\DAndDInitHPTracker\obj\Debug\DAndDInitHPTracker.csprojAssemblyReference.cache
+C:\Users\John-PC\source\repos\DAndDInitHPTracker\DAndDInitHPTracker\obj\Debug\DAndDInitHPTracker.Properties.Resources.resources
+C:\Users\John-PC\source\repos\DAndDInitHPTracker\DAndDInitHPTracker\obj\Debug\DAndDInitHPTracker.csproj.GenerateResource.cache
+C:\Users\John-PC\source\repos\DAndDInitHPTracker\DAndDInitHPTracker\obj\Debug\DAndDInitHPTracker.csproj.CoreCompileInputs.cache
+C:\Users\John-PC\source\repos\DAndDInitHPTracker\DAndDInitHPTracker\obj\Debug\DAndDInitHPTracker.exe
+C:\Users\John-PC\source\repos\DAndDInitHPTracker\DAndDInitHPTracker\obj\Debug\DAndDInitHPTracker.pdb
+C:\Users\John-PC\source\repos\DAndDInitHPTracker\DAndDInitHPTracker\obj\Debug\DAndDInitHPTracker.Form1.resources
