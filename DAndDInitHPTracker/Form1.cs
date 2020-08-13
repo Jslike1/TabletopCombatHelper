@@ -139,7 +139,7 @@ namespace DAndDInitHPTracker
         //Update Button Clicked
         private void button5_Click(object sender, EventArgs e)
         {
-            if (AssessTextboxes() && listBox1.SelectedIndex >= 0)
+            if (AssessTextboxes() && listBox1.SelectedIndex >= 0 && Combatants[listBox1.SelectedIndex].ID != CurrentTurn)
             {
                 var updatedCombatant = new Combatant(textBox1.Text, Convert.ToInt32(textBox2.Text), Convert.ToInt32(textBox3.Text));
                 Combatants[listBox1.SelectedIndex] = updatedCombatant;
