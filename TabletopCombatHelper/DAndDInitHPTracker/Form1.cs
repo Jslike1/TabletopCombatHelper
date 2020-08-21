@@ -17,9 +17,8 @@ namespace DAndDInitHPTracker
         BindingList<Combatant> Combatants
         {
             get
-             {
+            {
                 var NewCombatants = new BindingList<Combatant>();
-                NewCombatants.ListChanged += Combatants_ListChanged;
                 return listBox1 != null && listBox1.DataSource != null ? (BindingList<Combatant>)listBox1.DataSource : NewCombatants;
             }
             set
@@ -43,17 +42,6 @@ namespace DAndDInitHPTracker
         {
             InitializeComponent();
             Bind();
-
-            //TODO REMOVE
-            //var combatant1 = new Combatant("Goblin", 7, 29);
-            //var combatant2 = new Combatant("Orc", 7, 29);
-            //var combatant3 = new Combatant("Human", 7, 29);
-            //var combatant4 = new Combatant("Zombie", 7, 29);
-            //Combatants.Add(combatant1);
-            //Combatants.Add(combatant2);
-            //Combatants.Add(combatant3);
-            //Combatants.Add(combatant4);
-
             ClearTextboxes();
         }
 
@@ -68,27 +56,7 @@ namespace DAndDInitHPTracker
             }
         }
 
-        //Combatants List Changes
-        private void Combatants_ListChanged(object sender, ListChangedEventArgs e)
-        {
-            if (GetCurrentTurnIndex() < 0 && Combatants.Any() && IsCombatBegun)
-            {
-                if (NextTurn != null)
-                {
-                    CurrentTurn = NextTurn;
-                    SetNextTurn();
-                    SetCurrentTurnLabel();
-                }
-                else
-                {
-                    SetCurrentTurn();
-                    SetNextTurn();
-                }
-            }
-
-        }
-
-        //Left Button 
+        //Right Button 
         private void button3_Click(object sender, EventArgs e)
         {
             if (listBox1.SelectedIndex >= 0)
@@ -96,10 +64,25 @@ namespace DAndDInitHPTracker
                 var selectedCombatant = Combatants[listBox1.SelectedIndex];
                 Combatants.RemoveAt(listBox1.SelectedIndex);
                 NonCombatants.Add(selectedCombatant);
+
+                if (GetCurrentTurnIndex() < 0 && Combatants.Any() && IsCombatBegun)
+                {
+                    if (NextTurn != null)
+                    {
+                        CurrentTurn = NextTurn;
+                        SetNextTurn();
+                        SetCurrentTurnLabel();
+                    }
+                    else
+                    {
+                        SetCurrentTurn();
+                        SetNextTurn();
+                    }
+                }
             }
         }
 
-        //Right Button Clicked
+        //Left Button Clicked
         private void button4_Click(object sender, EventArgs e)
         {
             if (listBox2.SelectedIndex >= 0)
@@ -113,7 +96,7 @@ namespace DAndDInitHPTracker
         //Up Button Clicked
         private void button1_Click(object sender, EventArgs e)
         {
-            if (listBox1.SelectedIndex >= 1 && listBox1.SelectedIndex != GetCurrentTurnIndex())
+            if (listBox1.SelectedIndex >= 1)
             {
                 var selectedIndex = listBox1.SelectedIndex;
 
@@ -126,7 +109,7 @@ namespace DAndDInitHPTracker
         //Down Button Clicked
         private void button2_Click(object sender, EventArgs e)
         {
-            if (listBox1.SelectedIndex < Combatants.Count - 1 && listBox1.SelectedIndex != GetCurrentTurnIndex())
+            if (listBox1.SelectedIndex < Combatants.Count - 1)
             {
                 var selectedIndex = listBox1.SelectedIndex;
                 var selectedCombatant = Combatants[listBox1.SelectedIndex];
@@ -139,9 +122,10 @@ namespace DAndDInitHPTracker
         //Update Button Clicked
         private void button5_Click(object sender, EventArgs e)
         {
-            if (AssessTextboxes() && listBox1.SelectedIndex >= 0 && Combatants[listBox1.SelectedIndex].ID != CurrentTurn)
+            if (AssessTextboxes() && listBox1.SelectedIndex >= 0)
             {
-                var updatedCombatant = new Combatant(textBox1.Text, Convert.ToInt32(textBox2.Text), Convert.ToInt32(textBox3.Text));
+                Guid? guidIfCurrentTurnUpdating = Combatants[listBox1.SelectedIndex].ID == CurrentTurn ? CurrentTurn : null;
+                var updatedCombatant = new Combatant(textBox1.Text, Convert.ToInt32(textBox2.Text), Convert.ToInt32(textBox3.Text), guidIfCurrentTurnUpdating);
                 Combatants[listBox1.SelectedIndex] = updatedCombatant;
             }
         }
@@ -186,12 +170,8 @@ namespace DAndDInitHPTracker
             
             if (!IsCombatBegun)
             {
-                //SetCurrentTurn()
-                //SetCurrentTurnLabel();
                 IsCombatBegun = true;
                 button9.Text = "Next Turn";
-                //if (Combatants.Count >= 2) SetNextTurn();
-                //return;
             }
             if (Combatants.Any())
             {
