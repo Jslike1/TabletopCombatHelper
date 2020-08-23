@@ -124,7 +124,7 @@ namespace DAndDInitHPTracker
         {
             if (AssessTextboxes() && listBox1.SelectedIndex >= 0)
             {
-                Guid? guidIfCurrentTurnUpdating = Combatants[listBox1.SelectedIndex].ID == CurrentTurn ? CurrentTurn : null;
+                Guid? guidIfCurrentTurnUpdating = Combatants[listBox1.SelectedIndex].ID;
                 var updatedCombatant = new Combatant(textBox1.Text, Convert.ToInt32(textBox2.Text), Convert.ToInt32(textBox3.Text), guidIfCurrentTurnUpdating);
                 Combatants[listBox1.SelectedIndex] = updatedCombatant;
             }
