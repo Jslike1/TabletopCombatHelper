@@ -232,7 +232,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(164, 13);
             this.label6.TabIndex = 19;
-            this.label6.Text = "Test Build v 0.11 CLOSED BETA";
+            this.label6.Text = "Test Build v 0.12 CLOSED BETA";
             // 
             // Form1
             // 
