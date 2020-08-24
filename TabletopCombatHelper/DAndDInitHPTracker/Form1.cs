@@ -124,18 +124,26 @@ namespace DAndDInitHPTracker
         {
             if (AssessTextboxes() && listBox1.SelectedIndex >= 0)
             {
-                Guid? guidIfCurrentTurnUpdating = Combatants[listBox1.SelectedIndex].ID;
-                var updatedCombatant = new Combatant(textBox1.Text, Convert.ToInt32(textBox2.Text), Convert.ToInt32(textBox3.Text), guidIfCurrentTurnUpdating);
+                var updatedCombatant = new Combatant(textBox1.Text, Convert.ToInt32(textBox2.Text), Convert.ToInt32(textBox3.Text), 
+                                                     Combatants[listBox1.SelectedIndex].FriendlyId, Combatants[listBox1.SelectedIndex].ID);
                 Combatants[listBox1.SelectedIndex] = updatedCombatant;
             }
         }
 
         //Add Button Clicked
         private void button6_Click(object sender, EventArgs e)
-        {
+        {            
             if (AssessTextboxes())
             {
-                Combatants.Add(new Combatant(textBox1.Text, Convert.ToInt32(textBox2.Text), Convert.ToInt32(textBox3.Text)));
+                int friendlyId = 1;
+                var sameNameCombatants = Combatants.Where(x => x.Name == textBox1.Text).ToList();
+                sameNameCombatants.AddRange(NonCombatants.Where(x => x.Name == textBox1.Text).ToList());
+                foreach (var combatant in sameNameCombatants)
+                {
+                    if (combatant.FriendlyId >= friendlyId) friendlyId = combatant.FriendlyId + 1;
+                }
+
+                Combatants.Add(new Combatant(textBox1.Text, Convert.ToInt32(textBox2.Text), Convert.ToInt32(textBox3.Text), friendlyId));
             }
         }
 
@@ -167,18 +175,19 @@ namespace DAndDInitHPTracker
         //Next Turn
         private void button9_Click(object sender, EventArgs e)
         {
-            
-            if (!IsCombatBegun)
-            {
-                IsCombatBegun = true;
-                button9.Text = "Next Turn";
-            }
             if (Combatants.Any())
             {
+                if (!IsCombatBegun)
+                {
+                    IsCombatBegun = true;
+                    button9.Text = "Next Turn";
+                }
                 SetCurrentTurn();
                 SetNextTurn();
 
                 SetCurrentTurnLabel();
+
+                listBox1.SelectedIndex = GetCurrentTurnIndex();
             }
         }
         #endregion
@@ -219,7 +228,12 @@ namespace DAndDInitHPTracker
 
         private void SetCurrentTurnLabel()
         {
-            if(Combatants.Where(x => x.ID == CurrentTurn).Any()) label5.Text = Combatants.Where(x => x.ID == CurrentTurn).FirstOrDefault().Name;
+            if (Combatants.Where(x => x.ID == CurrentTurn).Any())
+            {
+                var currentCombatant = Combatants.Where(x => x.ID == CurrentTurn).FirstOrDefault();
+                string friendlyIdString = currentCombatant.FriendlyId > 1 ? currentCombatant.FriendlyId.ToString() : String.Empty;
+                label5.Text = currentCombatant.Name + " " + friendlyIdString;
+            }
         }
 
         private void SetCurrentTurn()

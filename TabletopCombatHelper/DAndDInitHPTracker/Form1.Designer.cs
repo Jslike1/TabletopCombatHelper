@@ -198,9 +198,9 @@
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(578, 34);
+            this.button9.Location = new System.Drawing.Point(578, 28);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(104, 23);
+            this.button9.Size = new System.Drawing.Size(210, 41);
             this.button9.TabIndex = 16;
             this.button9.Text = "Begin Combat";
             this.button9.UseVisualStyleBackColor = true;
@@ -209,18 +209,20 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(82, 34);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(8, 34);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(69, 13);
+            this.label4.Size = new System.Drawing.Size(135, 24);
             this.label4.TabIndex = 17;
             this.label4.Text = "Current Turn:";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(151, 34);
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(149, 34);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(100, 13);
+            this.label5.Size = new System.Drawing.Size(190, 24);
             this.label5.TabIndex = 18;
             this.label5.Text = "Combat Not Started";
             // 
@@ -232,7 +234,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(164, 13);
             this.label6.TabIndex = 19;
-            this.label6.Text = "Test Build v 0.12 CLOSED BETA";
+            this.label6.Text = "Test Build v 0.13 CLOSED BETA";
             // 
             // Form1
             // 

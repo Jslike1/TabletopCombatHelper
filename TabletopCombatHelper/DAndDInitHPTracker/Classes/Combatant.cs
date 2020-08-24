@@ -10,13 +10,16 @@ namespace DAndDInitHPTracker.Classes
     {
         public Combatant() {}
 
-        public Combatant(string name, int hp, int initiative, Guid? id = null)
+        public Combatant(string name, int hp, int initiative, int friendlyId, Guid? id = null)
         {
             Name = name;
             HP = hp;
             Initiative = initiative;
+            FriendlyId = friendlyId;
 
-            DisplayInformation = $"Name: {name} \t\t\t HP: {HP} \t\t\t Initiative: {Initiative}";
+            string friendlyIdString = friendlyId > 1 ? friendlyId.ToString() : String.Empty;
+
+            DisplayInformation = $"Name: {name + " " + friendlyIdString} \t\t\t HP: {HP} \t\t\t Initiative: {Initiative}";
             ID = id != null ? id : Guid.NewGuid();
         }
 
@@ -26,6 +29,8 @@ namespace DAndDInitHPTracker.Classes
         public int HP { get; set; }
 
         public int Initiative { get; set; }
+
+        public int FriendlyId { get; set; }
 
         public string DisplayInformation { get; set; }
 
