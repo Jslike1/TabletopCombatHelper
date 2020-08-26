@@ -124,8 +124,28 @@ namespace DAndDInitHPTracker
         {
             if (AssessTextboxes() && listBox1.SelectedIndex >= 0)
             {
+                Combatant combatant = Combatants[listBox1.SelectedIndex];
+
+                //Handle + or - to HP
+                var hpText = textBox2.Text;
+
+                if (hpText.StartsWith("+") || hpText.StartsWith("-"))
+                {
+                    var oper = char.ToString(hpText[0]);
+
+                    switch (oper)
+                    {
+                        case "+":
+                            textBox2.Text = (combatant.HP + Convert.ToInt32(hpText.Substring(1))).ToString();
+                            break;
+                        case "-":
+                            textBox2.Text = (combatant.HP - Convert.ToInt32(hpText.Substring(1))).ToString();
+                            break;
+                    }
+                }
+
                 var updatedCombatant = new Combatant(textBox1.Text, Convert.ToInt32(textBox2.Text), Convert.ToInt32(textBox3.Text), 
-                                                     Combatants[listBox1.SelectedIndex].FriendlyId, Combatants[listBox1.SelectedIndex].ID);
+                                                     combatant.FriendlyId, combatant.ID);
                 Combatants[listBox1.SelectedIndex] = updatedCombatant;
             }
         }
