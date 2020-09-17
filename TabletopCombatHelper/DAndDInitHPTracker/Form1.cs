@@ -173,11 +173,6 @@ namespace DAndDInitHPTracker
             ClearTextboxes();
         }
 
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         //Re-Order Combatants
         private void button8_Click(object sender, EventArgs e)
         {
