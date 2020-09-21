@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -53,6 +54,19 @@ namespace DAndDInitHPTracker
                 textBox1.Text = Combatants[listBox1.SelectedIndex].Name;
                 textBox2.Text = Combatants[listBox1.SelectedIndex].HP.ToString();
                 textBox3.Text = Combatants[listBox1.SelectedIndex].Initiative.ToString();
+            }
+        }
+
+        //If user changes Name Value
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            //If the value goes over 20 chars, keep it at 20
+            if (textBox1.Text.Length > 20)
+            {
+                textBox1.Text = textBox1.Text.Substring(0, 20);
+                textBox1.SelectionStart = textBox1.Text.Length;
+                textBox1.SelectionLength = 0;
+                SystemSounds.Exclamation.Play();
             }
         }
 

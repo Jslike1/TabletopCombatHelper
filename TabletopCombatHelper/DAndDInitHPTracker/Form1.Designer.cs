@@ -120,6 +120,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 6;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // textBox2
             // 
@@ -251,7 +252,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(139, 13);
             this.label6.TabIndex = 19;
-            this.label6.Text = "Test Build v 0.15 BETA";
+            this.label6.Text = "Test Build v 0.16 BETA";
             // 
             // Form1
             // 

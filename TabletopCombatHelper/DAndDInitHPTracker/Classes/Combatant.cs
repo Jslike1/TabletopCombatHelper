@@ -19,7 +19,7 @@ namespace DAndDInitHPTracker.Classes
 
             string friendlyIdString = friendlyId > 1 ? friendlyId.ToString() : String.Empty;
 
-            DisplayInformation = $"Name: {name + " " + friendlyIdString} {CalulateTabs(name)} HP: {HP} \t\t\t Initiative: {Initiative}";
+            DisplayInformation = $"Name: {Name + " " + friendlyIdString} {CalulateTabsName(Name)} HP: {HP} {CalulateTabsHP(HP.ToString())} Initiative: {Initiative}";
             ID = id != null ? id : Guid.NewGuid();
         }
 
@@ -36,13 +36,22 @@ namespace DAndDInitHPTracker.Classes
 
         public Guid? ID { get; private set; }
 
-        private string CalulateTabs(string name)
+        private string CalulateTabsName(string name)
         {
             string rv = $"\t\t\t";
             if (name.Length > 7) rv = $"\t\t";
-            if (name.Length > 13) rv = $"\t";
-            if (name.Length > 21) rv = String.Empty;
+            if (name.Length > 15) rv = $"\t";
             return rv;
         }
+
+        private string CalulateTabsHP(string hp)
+        {
+            string rv = $"\t\t\t";
+            if (hp.Length > 1) rv = $"\t\t";
+            if (hp.Length > 8) rv = $"\t";
+            if (hp.Length > 15) rv = String.Empty;
+            return rv;
+        }
+
     }
 }
