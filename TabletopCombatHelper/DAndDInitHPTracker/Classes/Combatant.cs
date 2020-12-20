@@ -10,11 +10,12 @@ namespace DAndDInitHPTracker.Classes
     {
         public Combatant() {}
 
-        public Combatant(string name, int hp, int initiative, int friendlyId, Guid? id = null)
+        public Combatant(string name, int hp, int initiative, string notes, int friendlyId, Guid? id = null)
         {
             Name = name;
             HP = hp;
             Initiative = initiative;
+            Notes = notes;
             FriendlyId = friendlyId;
 
             string friendlyIdString = friendlyId > 1 ? friendlyId.ToString() : String.Empty;
@@ -35,6 +36,8 @@ namespace DAndDInitHPTracker.Classes
         public string DisplayInformation { get; set; }
 
         public Guid? ID { get; private set; }
+
+        public string Notes { get; set; }
 
         private string CalulateTabsName(string name)
         {

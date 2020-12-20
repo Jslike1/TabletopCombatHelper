@@ -54,6 +54,7 @@ namespace DAndDInitHPTracker
                 textBox1.Text = Combatants[listBox1.SelectedIndex].Name;
                 textBox2.Text = Combatants[listBox1.SelectedIndex].HP.ToString();
                 textBox3.Text = Combatants[listBox1.SelectedIndex].Initiative.ToString();
+                richTextBox1.Text = Combatants[listBox1.SelectedIndex].Notes;
             }
         }
 
@@ -158,7 +159,7 @@ namespace DAndDInitHPTracker
                     }
                 }
 
-                var updatedCombatant = new Combatant(textBox1.Text, Convert.ToInt32(textBox2.Text), Convert.ToInt32(textBox3.Text), 
+                var updatedCombatant = new Combatant(textBox1.Text, Convert.ToInt32(textBox2.Text), Convert.ToInt32(textBox3.Text), richTextBox1.Text,
                                                      combatant.FriendlyId, combatant.ID);
                 Combatants[listBox1.SelectedIndex] = updatedCombatant;
             }
@@ -177,7 +178,7 @@ namespace DAndDInitHPTracker
                     if (combatant.FriendlyId >= friendlyId) friendlyId = combatant.FriendlyId + 1;
                 }
 
-                Combatants.Add(new Combatant(textBox1.Text, Convert.ToInt32(textBox2.Text), Convert.ToInt32(textBox3.Text), friendlyId));
+                Combatants.Add(new Combatant(textBox1.Text, Convert.ToInt32(textBox2.Text), Convert.ToInt32(textBox3.Text), richTextBox1.Text, friendlyId));
             }
         }
 
@@ -253,6 +254,7 @@ namespace DAndDInitHPTracker
             textBox1.Text = String.Empty;
             textBox2.Text = String.Empty;
             textBox3.Text = String.Empty;
+            richTextBox1.Text = String.Empty;
         }
 
         private void SetCurrentTurnLabel()
