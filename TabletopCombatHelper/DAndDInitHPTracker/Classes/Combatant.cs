@@ -56,5 +56,10 @@ namespace DAndDInitHPTracker.Classes
             return rv;
         }
 
+        public void NewID()
+        {
+            this.ID = Guid.NewGuid();
+        }
+
     }
 }

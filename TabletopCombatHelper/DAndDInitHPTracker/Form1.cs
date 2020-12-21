@@ -9,6 +9,7 @@ using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 
 namespace DAndDInitHPTracker
 {
@@ -36,6 +37,7 @@ namespace DAndDInitHPTracker
         Guid? CurrentTurn = null;
         Guid? NextTurn = null;
         bool IsCombatBegun = false;
+        SaveLoad _saveLoad = new SaveLoad();
         #endregion
 
         #region Form Methods
@@ -218,6 +220,51 @@ namespace DAndDInitHPTracker
                 SetCurrentTurnLabel();
 
                 listBox1.SelectedIndex = GetCurrentTurnIndex();
+            }
+        }
+
+        //Save Button
+        private void button10_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                _saveLoad.Save(JsonConvert.SerializeObject(Combatants));
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        //Load Button
+        private void button11_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var combatants = JsonConvert.DeserializeObject<BindingList<Combatant>>(_saveLoad.Load());
+
+                if (combatants != null && combatants.Any())
+                {
+                    foreach (var combatant in combatants)
+                    {
+                        combatant.NewID();
+                    }
+
+                    Combatants = combatants;
+                    IsCombatBegun = false;
+                    CurrentTurn = null;
+                    NextTurn = null;
+                    button9.Text = "Begin Combat";
+                    label5.Text = "Combat Not Started";
+                    textBox1.Text = Combatants[listBox1.SelectedIndex].Name;
+                    textBox2.Text = Combatants[listBox1.SelectedIndex].HP.ToString();
+                    textBox3.Text = Combatants[listBox1.SelectedIndex].Initiative.ToString();
+                    richTextBox1.Text = Combatants[listBox1.SelectedIndex].Notes;
+                }
+            }
+            catch (Exception ex) 
+            {
+                MessageBox.Show(ex.Message);
             }
         }
         #endregion

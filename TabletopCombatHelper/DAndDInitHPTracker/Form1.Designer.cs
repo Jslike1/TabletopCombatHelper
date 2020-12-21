@@ -50,6 +50,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.button10 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listBox1
@@ -206,7 +208,7 @@
             // button8
             // 
             this.button8.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Location = new System.Drawing.Point(692, 455);
+            this.button8.Location = new System.Drawing.Point(692, 381);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(96, 34);
             this.button8.TabIndex = 15;
@@ -254,7 +256,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(139, 13);
             this.label6.TabIndex = 19;
-            this.label6.Text = "Test Build v 0.17 BETA";
+            this.label6.Text = "Test Build v 0.18 BETA";
             // 
             // label7
             // 
@@ -273,11 +275,33 @@
             this.richTextBox1.TabIndex = 21;
             this.richTextBox1.Text = "";
             // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(632, 439);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(75, 50);
+            this.button10.TabIndex = 22;
+            this.button10.Text = "Save";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(713, 439);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(75, 50);
+            this.button11.TabIndex = 23;
+            this.button11.Text = "Load";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 498);
+            this.Controls.Add(this.button11);
+            this.Controls.Add(this.button10);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -332,6 +356,8 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button button11;
     }
 }
 
